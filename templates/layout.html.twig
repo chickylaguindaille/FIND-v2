@@ -1,0 +1,31 @@
+{% include 'base.html.twig' %}
+
+{% block stylesheets %}
+    {% include 'inc/all/all.css.twig' %}
+    {% include 'inc/all/navbar/navbar.css.twig' %}
+{% endblock %}
+
+{% block body %}
+
+    {% block navbar %}
+        {% include 'inc/all/navbar/navbar.html.twig' %}
+    {% endblock %}
+
+    {% block sidebar %}
+        {# {% include 'inc/sidebar.html.twig' %} #}
+    {% endblock %}
+
+    {% block content %}
+        {# {% include 'inc/sidebar.html.twig' %} #}
+    {% endblock %}
+
+    {% block footer %}
+        {# {% include 'inc/sidebar.html.twig' %} #}
+    {% endblock %}
+
+{% endblock %}
+
+{% block javascript %}
+    {% include 'inc/all/all.js.twig' %}
+{% endblock %}
+
