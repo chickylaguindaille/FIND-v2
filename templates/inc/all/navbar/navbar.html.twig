@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
   <div class="container-fluid">
-    <a class="navbar-brand collapse navbar-collapse" href="#"><span class="bi bi-emoji-smile"></span></a>
+    <a class="navbar-brand collapse navbar-collapse" href="{{ path('accueil')}}"><span class="bi bi-emoji-smile"></span></a>
     
   {# MOBILE START #}
-    <button class="navbar-toggler searchHideSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+    <button class="navbar-toggler searchHideSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="#navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-toggler searchHideSupportedContent" href="/"  aria-expanded="true">
+    <a class="navbar-toggler searchHideSupportedContent" href="{{ path('accueil')}}"  aria-expanded="true">
       <span class="bi bi-emoji-smile"></span>
     </a>
 
