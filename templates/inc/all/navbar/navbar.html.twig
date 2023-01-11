@@ -2,26 +2,30 @@
   <div class="container-fluid">
     <a class="navbar-brand collapse navbar-collapse" href="#">Navbar</a>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+  {# MOBILE START #}
+    <button class="navbar-toggler searchHideSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-toggler" href="/"  aria-expanded="true">
+
+    <a class="navbar-toggler searchHideSupportedContent" href="/"  aria-expanded="true">
       <span class="bi bi-emoji-smile"></span>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
+    <button class="navbar-toggler searchHideSupportedContent" id="searchButtonSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
       <span class="bi bi-search"></span>
     </button>
-    <form class="collapse searchSupportedContent">
+
+  {# MOBILE START SEARCH #}
+    <button class="navbar-toggler closeHideSupportedContent hidden" id="closeHideSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
+      <span class="bi bi-x"></span>
+    </button>
+    <form class="hidden d-lg-none" id="searchFormSupportedContent" >
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 
 
-
-
-
-
+  {# DESKTOP #}
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
