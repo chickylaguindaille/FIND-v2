@@ -1,22 +1,25 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        <div class="d-lg-none collapse-lg collapse collapse-horizontal position-absolute sticky-top col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="navbarSupportedContent">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <div class="d-lg-none collapse collapse in width position-absolute sticky-top w-50 bg-dark" id="navbarSupportedContent">
+            <div class="d-flex flex-column align-items-sm-start pt-2  text-white min-vh-100">
                 {# <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-inline">Menu</span>
                 </a> #}
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
-                    <button class="navbar-toggler" id="closeSearchSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
-                        <span class="bi bi-x bg-light"></span>
+                <div class="w-100 text-end mt-2">
+                    <button class="navbar-toggler " id="closeSearchSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
+                        <span class="bi bi-x text-white fs-3"></span>
                     </button>
-                    <li class="nav-item">
+                </div>
+
+                <ul class="nav nav-pills flex-column mb-auto mb-0 align-items-sm-start text-start w-100 px-3" id="menu">
+                    <li class="nav-item px-2">
                         <a href="#" class="nav-link align-middle px-0">
-                            <i class="bi bi-search text-white"></i> <span class="ms-1 d-inline text-light">FIND</span>
+                            <i class="fs-4 bi bi-search text-white"></i> <span class="ms-3 d-inline text-light ">FIND</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class=" fs-4 bi bi-calendar-event"></i> <span class="ms-1 d-inline text-light">Calendrier</span> </a>
+                    <li class="px-2">
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0">
+                            <i class="fs-4 bi bi-calendar-event text-light "></i> <span class="ms-3 d-inline text-light">Calendrier</span> </a>
                         <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a href="#" class="nav-link px-0"> <span class="d-inline">Item</span> 1 </a>
@@ -27,9 +30,9 @@
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi bi-star"></i> <span class="ms-1 d-inline">Insignes</span></a>
+                    <li class="px-2">
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 ">
+                            <i class="fs-4 bi bi-star text-light"></i> <span class="ms-3 d-inline text-light">Insignes</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a href="#" class="nav-link px-0"> <span class="d-inline">Item</span> 1</a>
@@ -39,23 +42,23 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="bi bi-book"></i> <span class="ms-1 d-inline">Codes</span>
+                    <li class="nav-item px-2">
+                        <a href="#" class="nav-link px-0">
+                            <i class="fs-4 bi bi-book text-light"></i> <span class="ms-3 d-inline text-light">Codes</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 disabled">
-                            <i class="bi bi-pen"></i> <span class="ms-1 d-inline">Révisions</span>
+                    <li class="nav-item px-2">
+                        <a href="#" class="nav-link px-0 disabled">
+                            <i class="fs-4 bi bi-pen"></i> <span class="ms-3 d-inline">Révisions</span>
                         </a>
                     </li>
 
                 </ul>
                 <hr>
-                <div class="dropdown pb-4">
+                <div class="dropdown pb-4 w-100 px-2">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-inline mx-1">loser</span>
+                        <span class="d-inline ms-3">loser</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
