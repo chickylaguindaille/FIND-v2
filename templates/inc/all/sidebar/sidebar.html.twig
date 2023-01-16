@@ -12,57 +12,82 @@
                 </div>
 
                 <ul class="nav nav-pills flex-column mb-auto mb-0 align-items-sm-start text-start w-100 px-3" id="menu">
-                    <li class="nav-item px-2">
-                        <a href="#submenu0" data-bs-toggle="collapse" class="nav-link align px-0">
+                    
+                    
+                    
+                    
+                    <li class="nav-item px-2 w-100">
+                        <a href="#submenu0" data-bs-toggle="collapse" class="nav-link align px-0 ">
                             <i class="fs-4 bi bi-search text-white"></i> <span class="ms-3 d-inline text-light ">FIND</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu0">
+                            
+                            
                             <li class="w-100">
-                                <a href="#subsubmenu0" data-bs-target="#subsubmenu0" aria-controls="#subsubmenu0" class="nav-link px-0"> <span class="d-inline"><i class="bi bi-pin-map mx-2 fs-4"></i></span> Localisation </a>
+                                <a href="#subsubmenu0" data-bs-toggle="collapse" class="nav-link px-0 text-white"> <span class="d-inline">
+                                    <i class="bi bi-pin-map mx-2 fs-4 text-white"></i></span> Localisation </a>
                                 <ul class="collapse nav flex-column ms-1" id="subsubmenu0" >
                                     <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-inline"><i class="bi bi-pin-map mx-2 fs-4"></i></span> Localisation </a>
+                                        <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"><img src="{{ asset('assets/img/flags/France.png') }}" style="width: 2em;" class="mx-2"></span> France </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-inline"><i class="bi bi-mortarboard mx-2 fs-4"></i></span> Folklore </a>
+                                        <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"><img src="{{ asset('assets/img/flags/Belgique.png') }}" style="width: 2em;" class="mx-2"></span> Belgique </a>
                                     </li>
                                 </ul>
                             </li>
+                            
+                            
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-inline"><i class="bi bi-mortarboard mx-2 fs-4"></i></span> Folklore </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="px-2">
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0">
-                            <i class="fs-4 bi bi-calendar-event text-light "></i> <span class="ms-3 d-inline text-light">Calendrier</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-inline">Item</span> 2 </a>
+                                <a href="#subsubmenu00" data-bs-toggle="collapse" class="nav-link px-0 text-white"> <span class="d-inline">
+                                    <i class="bi bi-mortarboard mx-2 fs-4 text-white"></i></span> Folklore </a>
+                                <ul class="collapse nav flex-column ms-1" id="subsubmenu00" >
+                                    <li class="w-100">
+                                        <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"><img src="{{ asset('assets/img/logos/Faluche.svg') }}" style="width: 2em;" class="mx-2"></span> Faluche </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"><img src="{{ asset('assets/img/logos/Calotte.svg') }}" style="width: 2em;" class="mx-2"></span> Calotte </a>
+                                    </li>   
+                                    <li>
+                                        <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"><img src="{{ asset('assets/img/logos/Penne.svg') }}" style="width: 2em;" class="mx-2"></span> Penne </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="px-2">
+
+
+
+                    <li class="px-2 w-100">
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0">
+                            <i class="fs-4 bi bi-calendar-event text-light "></i> <span class="ms-3 d-inline text-light">Calendrier</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"></span> Congrès Faluchard </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"></span> Ordinesque </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="px-2 w-100">
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 ">
                             <i class="fs-4 bi bi-star text-light"></i> <span class="ms-3 d-inline text-light">Insignes</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-inline">Item</span> 1</a>
+                                <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"></span> Code National de la Faluche</a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-inline">Item</span> 2</a>
+                                <a href="#" class="nav-link px-0 text-white"> <span class="d-inline"></span> Usage en Belgique</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item px-2">
+                    <li class="nav-item px-2 w-100">
                         <a href="#" class="nav-link px-0">
                             <i class="fs-4 bi bi-book text-light"></i> <span class="ms-3 d-inline text-light">Codes</span>
                         </a>
                     </li>
-                    <li class="nav-item px-2">
+                    <li class="nav-item px-2 w-100">
                         <a href="#" class="nav-link px-0 disabled">
                             <i class="fs-4 bi bi-pen"></i> <span class="ms-3 d-inline">Révisions</span>
                         </a>
