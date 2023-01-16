@@ -21,4 +21,12 @@ class FindController extends AbstractController
         return $this->render('accueil.html.twig');
     }
 
+    /**
+    * @Route("/localisation/ville", name="ville")
+    * @Template()
+    */
+   public function villes(Request $request)
+   {
+       return $this->render('location/town.html.twig');
+   }
 }

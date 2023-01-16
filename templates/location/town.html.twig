@@ -1,0 +1,60 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
+    <div class="text-center w-25">
+        <select class="selectpicker data-width="fit" w-75" aria-label=".form-select-sm example">
+            <option value="1" selected>Alphabet</option>
+            <option value="2">Région</option>
+        </select>
+    </div>
+    <div class="form-outline w-75">
+        <input type="search" id="form1" class="form-control" placeholder="Type query" aria-label="Search" />
+    </div>
+</div>
+
+<h6 class="bg-light p-2 border-top border-bottom mb-0">C</h6>
+
+<ul class="list-group list-group-light mb-4">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="{{ asset('assets/img/villes/Créteil.jpg') }}" class="" alt=""
+        style="width: 45px; height: 45px" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">Créteil</p>
+        <p class="text-muted mb-0">Ile-de-France, France</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-primary">Onboarding</span>
+  </li>
+
+<h6 class="bg-light p-2 border-top border-bottom mb-0">P</h6>
+
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="{{ asset('assets/img/villes/Paris.jpg') }}" class="" alt=""
+        style="width: 45px; height: 45px" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">Paris</p>
+        <p class="text-muted mb-0">Ile-de-France, France</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-warning">Awaiting</span>
+  </li>
+
+<h6 class="bg-light p-2 border-top border-bottom mb-0">L</h6>
+
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <img src="{{ asset('assets/img/villes/Lille.jpg') }}" alt="" style="width: 45px; height: 45px" class="" />
+        <div class="ms-3">
+        <p class="fw-bold mb-1">Lille</p>
+        <p class="text-muted mb-0">Haut-de-France, France</p>
+        </div>
+    </div>
+    <span class="badge rounded-pill badge-success">Active</span>
+    </li>
+</ul>
+{% endblock %}
