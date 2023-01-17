@@ -16,7 +16,7 @@ class Chicken implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    private ?string $yes = null;
+    private ?string $email = null;
 
     #[ORM\Column]
     private array $roles = [];
@@ -32,14 +32,14 @@ class Chicken implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function getYes(): ?string
+    public function getEmail(): ?string
     {
-        return $this->yes;
+        return $this->email;
     }
 
-    public function setYes(string $yes): self
+    public function setEmail(string $email): self
     {
-        $this->yes = $yes;
+        $this->email = $email;
 
         return $this;
     }
@@ -51,7 +51,7 @@ class Chicken implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->yes;
+        return (string) $this->email;
     }
 
     /**
@@ -59,7 +59,7 @@ class Chicken implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->yes;
+        return (string) $this->email;
     }
 
     /**
