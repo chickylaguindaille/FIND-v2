@@ -27,6 +27,9 @@ class Chicken implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $test = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,5 +117,17 @@ class Chicken implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getTest(): ?string
+    {
+        return $this->test;
+    }
+
+    public function setTest(?string $test): self
+    {
+        $this->test = $test;
+
+        return $this;
     }
 }
