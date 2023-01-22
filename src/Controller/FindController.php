@@ -56,9 +56,8 @@ class FindController extends AbstractController
     }
 
     #[Route('/Localisation/{country}/{ville}/Corporations', name: 'corporations', methods: ['GET'])]
-    public function corporations($country, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository): Response
+    public function corporations($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository): Response
     {
-        $ville="Paris";
         return $this->render('corporations/corporations.html.twig', [
             'corporations' => $corporationsRepository->findAll(), 'country' => $country, 'ville' => $ville
         ]);

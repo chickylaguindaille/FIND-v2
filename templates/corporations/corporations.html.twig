@@ -20,7 +20,7 @@
 {# <h6 class="bg-light p-2 border-top border-bottom mb-0">C</h6> #}
 
 
-{# {% if corporation.country == country %} #}
+{% if corporation.ville == ville %}
   <li class="list-group-item d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
       <img src="{{ asset(''~ville.blason??"")}}" class="" alt=""
@@ -35,7 +35,7 @@
     </div>
     <span class="badge rounded-pill badge-primary">Onboarding</span>
   </li>
-{# {% endif %} #}
+{% endif %}
 
 {# <h6 class="bg-light p-2 border-top border-bottom mb-0">P</h6> #}
 
