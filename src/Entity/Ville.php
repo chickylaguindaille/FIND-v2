@@ -25,9 +25,6 @@ class Ville
     #[ORM\Column(length: 255)]
     private ?string $region = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $test = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -81,15 +78,4 @@ class Ville
         return $this;
     }
 
-    public function getTest(): ?string
-    {
-        return $this->test;
-    }
-
-    public function setTest(string $test): self
-    {
-        $this->test = $test;
-
-        return $this;
-    }
 }
