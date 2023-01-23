@@ -19,21 +19,16 @@
 {% for corporation in corporations|sort((a, b) => a.nom <=> b.nom) %}
 {# <h6 class="bg-light p-2 border-top border-bottom mb-0">C</h6> #}
 
-
 {% if corporation.ville == ville %}
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center">
-      <img src="{{ asset(''~ville.blason??"")}}" class="" alt=""
-        style="width: 45px; height: 45px" />
-
-
-
-      <div class="ms-3">
-        <p class="fw-bold mb-1">{{ corporation.nom }}</p>
-        <p class="text-muted mb-0">{{ corporation.ville }}</p>
-      </div>
-    </div>
-    <span class="badge rounded-pill badge-primary">Onboarding</span>
+  <li class="list-group-item  justify-content-between align-items-center">
+  <a href="{{ path('corporations', {'country': country, 'ville': corporation.ville})}}" class="w-100 d-flex text-decoration-none align-items-center" >
+          <img src="" class="" alt="" style="width: 45px; height: 45px" />
+          <span class="ms-3">
+            <p class="fw-bold mb-1" style=" color: black;">{{ corporation.nom }}</p>
+            <span class="text-muted mb-0">{{ corporation.ville }}</span>
+          </span>
+          <span class="ms-auto"><i class="bi bi-chevron-right text-dark"></i></span>
+  </a>
   </li>
 {% endif %}
 
