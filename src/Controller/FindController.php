@@ -20,6 +20,7 @@ use App\Repository\CorporationsRepository;
 
 class FindController extends AbstractController
 {
+    // ACCUEIL
     /**
      * @Route("/accueil", name="accueil")
      * @Template()
@@ -29,38 +30,35 @@ class FindController extends AbstractController
         return $this->render('accueil.html.twig');
     }
 
-    // #[Route('/Localisation/France/Ville', name: 'villeFrance', methods: ['GET'])]
-    // public function villesFrance(VilleRepository $villeRepository): Response
-    // {
-    //     $country="France";
-    //     return $this->render('location/town.html.twig', [
-    //         'villes' => $villeRepository->findAll(), 'country' => $country
-    //     ]);
-    // }
-
-    // #[Route('/Localisation/Belgique/Ville', name: 'villeBelgique', methods: ['GET'])]
-    // public function villesBelgique(VilleRepository $villeRepository): Response
-    // {
-    //     $country="Belgique";
-    //     return $this->render('location/town.html.twig', [
-    //         'villes' => $villeRepository->findAll(), 'country' => $country
-    //     ]);
-    // }
-
+    // VILLES
     #[Route('/Localisation/{country}/Ville', name: 'ville', methods: ['GET'])]
     public function villes($country, Request $request, VilleRepository $villeRepository): Response
     {
-        // exit(var_dump($villeRepository));
+        // exit(var_dump($villeRepository['villes']['nom']));
         return $this->render('location/town.html.twig', [
             'villes' => $villeRepository->findAll(), 'country' => $country
         ]);
     }
 
+    // CORPORATIONS
     #[Route('/Localisation/{country}/{ville}/Corporations', name: 'corporations', methods: ['GET'])]
     public function corporations($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository): Response
     {
         return $this->render('corporations/corporations.html.twig', [
-            'corporations' => $corporationsRepository->findAll(), 'country' => $country, 'ville' => $ville
+            'corporations' => $corporationsRepository->findAll(), 
+            'country' => $country, 
+            'ville' => $ville
+        ]);
+    }
+
+    // CORPORATIONS
+    #[Route('/Localisation/{country}/{ville}/{corpo}/{id}', name: 'corporation', methods: ['GET'])]
+    public function corporation($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository, Corporations $corporation): Response
+    {
+        return $this->render('corporations/corporation.html.twig', [
+            'corporations' => $corporationsRepository->findAll(), 
+            'country' => $country, 'ville' => $ville,
+            'corporation' => $corporation,
         ]);
     }
 

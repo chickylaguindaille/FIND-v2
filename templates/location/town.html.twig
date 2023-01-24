@@ -3,35 +3,46 @@
 {% block content %}
 
 
-<div class="d-flex justify-content-center">
-<div class="input-group mt-3 mb-3 w-75">
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tri</button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Alphabet</a></li>
-    <li><a class="dropdown-item" href="#">Région action</a></li>
-  </ul>
-  <input type="search" class="form-control" placeholder="Recherche">
-</div>
+<div class="d-flex">
+  <div class="input-group mt-3 mb-3 w-100  align-items-center ">
+      <a href="{{app.request.headers.get('referer')}}" class="position-absolute"><i class="bi bi-chevron-left text-dark px-3 "></i></a>
+      <div class="justify-content-center mx-auto d-flex">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tri</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Alphabet</a></li>
+          <li><a class="dropdown-item" href="#">Région action</a></li>
+        </ul>
+        <input type="search" class="form-control" placeholder="Recherche">
+      </div>
+  </div>
 </div>
 
 {# {{ dump() }} #}
 <ul class="list-group list-group-light mb-4">
+
+{% set alphabet = "?" %}
+
 {% for ville in villes|sort((a, b) => a.nom <=> b.nom) %}
-{# <h6 class="bg-light p-2 border-top border-bottom mb-0">C</h6> #}
+  {% if ville.country == country %}
+    {% if ville.nom|first != alphabet %}
+      {% set alphabet = ville.nom|first %} 
+      <h6 class="bg-light p-2 border-top border-bottom mb-0">{{alphabet}}</h6> 
+    {% endif %}
 
+    <li class="list-group-item justify-content-between align-items-center">
+    <a href="{{ path('corporations', {'country': ville.country, 'ville': ville.nom})}}" class="w-100 d-flex text-decoration-none align-items-center" >
+            <img src="{{ asset(''~ville.blason)}}" class="" alt="" style="width: 45px; height: 45px" />
+            <span class="ms-3">
+              <p class="fw-bold mb-1" style=" color: black;">{{ ville.nom }}</p>
+              <span class="text-muted mb-0">{{ ville.country }}, {{ ville.region }}</span>
+            </span>
+            <span class="ms-auto"><i class="bi bi-chevron-right text-dark"></i></span>
+    </a>
+    </li>
+  {% endif %}
 
-{% if ville.country == country %}
-  <li class="list-group-item  justify-content-between align-items-center">
-  <a href="{{ path('corporations', {'country': ville.country, 'ville': ville.nom})}}" class="w-100 d-flex text-decoration-none align-items-center" >
-          <img src="{{ asset(''~ville.blason)}}" class="" alt="" style="width: 45px; height: 45px" />
-          <span class="ms-3">
-            <p class="fw-bold mb-1" style=" color: black;">{{ ville.nom }}</p>
-            <span class="text-muted mb-0">{{ ville.country }} , {{ ville.region }}</span>
-          </span>
-          <span class="ms-auto"><i class="bi bi-chevron-right text-dark"></i></span>
-  </a>
-  </li>
-{% endif %}
+    
+
 {# <h6 class="bg-light p-2 border-top border-bottom mb-0">P</h6> #}
 
   {# <li class="list-group-item d-flex justify-content-between align-items-center">
