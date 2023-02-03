@@ -15,14 +15,58 @@
       <span class="bi bi-search"></span>
     </button>
 
+
+
+
+
+
+
+
+
   {# MOBILE START SEARCH #}
-    <button class="navbar-toggler closeHideSupportedContent hidden" id="closeHideSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
-      <span class="bi bi-x"></span>
-    </button>
-    <form class="hidden d-lg-none" id="searchFormSupportedContent" >
-      <input class="form-control me-2" type="search" placeholder="Trouve ton folklore" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">FIND</button>
-    </form>
+      <button class="navbar-toggler closeHideSupportedContent hidden" id="closeHideSupportedContent" type="button" data-bs-toggle="collapse" data-bs-target=".searchSupportedContent" aria-controls="searchSupportedContent" aria-label="Toggle navigation">
+        <span class="bi bi-x"></span>
+      </button>
+      <form class="hidden d-lg-none" id="searchFormSupportedContent" >
+        <input class="form-control me-2" id="searchInput" type="search" placeholder="Trouve ton folklore" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">FIND</button>
+      </form>
+
+    
+      <div id="result-search-global" class="d-none position-absolute text-center position-fixed z-1000" style="top:3em;">
+      
+
+     <ul class="list-group list-group-light mb-4">
+
+      {% for ville in villes|sort((a, b) => a.nom <=> b.nom) %}
+        {% if ville.country == country %}
+
+          <li class="list-group-item justify-content-between align-items-center">
+          <a href="{{ path('corporations', {'country': ville.country, 'ville': ville.nom})}}" class="w-100 d-flex text-decoration-none align-items-center" >
+                  <img src="{{ asset(''~ville.blason)}}" class="" alt="" style="width: 45px; height: 45px" />
+                  <span class="ms-3">
+                    <p class="fw-bold mb-1" style=" color: black;">{{ ville.nom }}</p>
+                    <span class="text-muted mb-0">{{ ville.country }}, {{ ville.region }}</span>
+                  </span>
+                  <span class="ms-auto"><i class="bi bi-chevron-right text-dark"></i></span>
+          </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
   {# DESKTOP #}
