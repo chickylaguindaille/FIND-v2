@@ -51,7 +51,7 @@ class FindController extends AbstractController
         ]);
     }
 
-    // CORPORATIONS
+    // CORPORATION
     #[Route('/Localisation/{country}/{ville}/{corpo}/{id}', name: 'corporation', methods: ['GET'])]
     public function corporation($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository, Corporations $corporation): Response
     {
