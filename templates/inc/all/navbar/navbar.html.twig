@@ -38,7 +38,7 @@
 
      <ul class="list-group list-group-light mb-4">
 
-      {% for ville in villes|sort((a, b) => a.nom <=> b.nom) %}
+      {# {% for ville in villes|sort((a, b) => a.nom <=> b.nom) %}
         {% if ville.country == country %}
 
           <li class="list-group-item justify-content-between align-items-center">
@@ -52,7 +52,7 @@
           </a>
           </li>
         {% endif %}
-      {% endfor %}
+      {% endfor %} #}
       </ul>
 
       </div>
