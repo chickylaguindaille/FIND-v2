@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Decorum{% endblock %}
+
+{% block body %}
+    <h1>Create new Decorum</h1>
+
+    {{ include('decorum/_form.html.twig') }}
+
+    <a href="{{ path('app_decorum_index') }}">back to list</a>
+{% endblock %}

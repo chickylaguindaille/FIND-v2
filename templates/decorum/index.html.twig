@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Decorum index{% endblock %}
+
+{% block body %}
+    <h1>Decorum index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Source</th>
+                <th>Description</th>
+                <th>Idcorporation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for decorum in decorums %}
+            <tr>
+                <td>{{ decorum.id }}</td>
+                <td>{{ decorum.name }}</td>
+                <td>{{ decorum.source }}</td>
+                <td>{{ decorum.description }}</td>
+                <td>{{ decorum.idcorporation }}</td>
+                <td>
+                    <a href="{{ path('app_decorum_show', {'id': decorum.id}) }}">show</a>
+                    <a href="{{ path('app_decorum_edit', {'id': decorum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_decorum_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chant index{% endblock %}
+
+{% block body %}
+    <h1>Chant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Idcorporation</th>
+                <th>Texte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chant in chants %}
+            <tr>
+                <td>{{ chant.id }}</td>
+                <td>{{ chant.name }}</td>
+                <td>{{ chant.author }}</td>
+                <td>{{ chant.idcorporation }}</td>
+                <td>{{ chant.texte }}</td>
+                <td>
+                    <a href="{{ path('app_chant_show', {'id': chant.id}) }}">show</a>
+                    <a href="{{ path('app_chant_edit', {'id': chant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chant_new') }}">Create new</a>
+{% endblock %}

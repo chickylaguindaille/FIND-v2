@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Decorum{% endblock %}
+
+{% block body %}
+    <h1>Edit Decorum</h1>
+
+    {{ include('decorum/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_decorum_index') }}">back to list</a>
+
+    {{ include('decorum/_delete_form.html.twig') }}
+{% endblock %}

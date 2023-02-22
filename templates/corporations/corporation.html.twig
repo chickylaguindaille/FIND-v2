@@ -4,7 +4,7 @@
 
 {% block content %}
 
-{{ dump(particularites) }}
+{{ dump(chant) }}
 
 <section style="background-color: #eee;">
     <div class="container py-3">
@@ -52,35 +52,132 @@
               </div>
             </div>
           </div>
-
-
         </div>
-
 
       <div class="accordion" id="myAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingAnecdotes">
-                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseAnecdotes">Anecdotes</button>									
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseAnecdotes">Anecdotes</button>									
             </h2>
             <div id="collapseAnecdotes" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
               <div class="col-lg-8">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0">Full Name</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0">Johnatan Smith</p>
-                      </div>
-                    </div>
-                    <hr>
+                    {% for key, anecdote in anecdotes %}
+                      {% if anecdote.idcorporation == idcorporation %}
+                        <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">{{anecdote.title}}</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{anecdote.anecdote}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                      {% endif %}
+                  {% endfor %}
                   </div>
                 </div>
               </div>
         </div>
       </div>
 
+      <div class="accordion" id="myAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingChant">
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseChant">Chant</button>									
+            </h2>
+            <div id="collapseChant" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    {% for key, chant in chant %}
+                      {% if chant.idcorporation == idcorporation %}
+                        <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">{{chant.name}} {% if chant.author is defined and chant.author != null %} - {{chant.author}} {% endif %}</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{chant.texte|nl2br}}</p>
+                            </div>
+                        </div>
+                        {# <hr> #}
+                      {% endif %}
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+      <div class="accordion" id="myAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingDecorum">
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDécorum">Décorum</button>									
+            </h2>
+            <div id="collapseDécorum" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    {% for key, decorum in decorum %}
+                      {% if decorum.idcorporation == idcorporation %}
+                      <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3 pb-2">
+                              <b class="mb-0"><u>{{decorum.name}}</u></b>
+                            </div>
+                            <div class="col-3 border">
+                              <img src="{{ asset(''~decorum.source)}}" style="width: 100px;">
+                            </div>
+                            {# <div class="col-1">
+                            </div> #}
+                            <div class="col-9 border">
+                            {{decorum.description}}
+                            </div>
+                        </div>
+                      </div>
+                        <hr>
+                      {% endif %}
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+
+      <div class="accordion" id="myAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingPins">
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePins">Pin's</button>									
+            </h2>
+            <div id="collapsePins" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    {% for key, anecdote in anecdotes %}
+                      {% if anecdote.idcorporation == idcorporation %}
+                        <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">{{anecdote.title}}</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{anecdote.anecdote}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                      {% endif %}
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
 
           {# <div class="row">
             <div class="col-md-6">
