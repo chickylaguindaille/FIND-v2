@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Anecdotes{% endblock %}
+
+{% block body %}
+    <h1>Edit Anecdotes</h1>
+
+    {{ include('anecdotes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_anecdotes_index') }}">back to list</a>
+
+    {{ include('anecdotes/_delete_form.html.twig') }}
+{% endblock %}

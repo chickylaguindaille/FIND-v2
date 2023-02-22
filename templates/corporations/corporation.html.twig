@@ -1,141 +1,126 @@
-{% extends 'layout.html.twig' %}
+{% extends "layout.html.twig" %}
 
-{% block title %}Corporations{% endblock %}
+{% block title %}{{ corporation.Nom }}{% endblock %}
 
-{% block body %}
+{% block content %}
 
+{{ dump(particularites) }}
 
-
-
-<div class="container col-10">
-  <div class="row">
-    <div class="col-3 text-center">
-    
-    </div>
-    <div class="col-6 text-center">
-      <h1 class="">{{ corporation.Nom }}</h1>
-    </div>
-    <div class="col-3 text-center">
-      <img src="{{ asset(''~corporation.logo)}}" style="width: 45px; height: 45px">
-    </div>
-  </div>
-  <div class="row text-center">
-    <div class="col">
-      <b>Résumé</b><br>
-      {{ corporation.Resume }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <b>Abréviation</b>
-    </div>
-    <div class="col">
-      {{ corporation.Abreviation }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <b>Création</b>
-    </div>
-    <div class="col">
-      {{ corporation.Date ? corporation.Date|date('d-m-Y') : '' }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <b>Localisation</b>
-    </div>
-    <div class="col">
-      {{ corporation.Ville }}, {{ corporation.Pays }}
-    </div>
-  </div>
-</div>
-
-
-    <div id="accordion">
-
-        <div class="card">
-            <div class="card-header">
-            <a class="btn" data-bs-toggle="collapse" href="#collapseZero">
-                Particularités
-            </a>
+<section style="background-color: #eee;">
+    <div class="container py-3">
+  
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="{{ asset(''~corporation.logo)}}" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-2">{{ corporation.Nom }} ({{ corporation.Abreviation }}) </h5>
+              <p class="text-muted mb-1">{{ corporation.Ville }}, {{ corporation.Pays }} | {{ corporation.Date ? corporation.Date|date('d-m-Y') : '' }}</p>
+              <p class="text-muted mb-2">{{ corporation.Resume }}</p>
+              {# <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary">Follow</button>
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div> #}
             </div>
-            <div id="collapseZero" class="collapse" data-bs-parent="#accordion">
-            <div class="card-body">
-                Lorem ipsum..
+          </div>
+
+
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+
+          <div class="accordion" id="myAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingParticularités">
+                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseParticularités">Particularités</button>									
+                </h2>
+                <div id="collapseParticularités" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                  <ul class="list-group list-group-flush rounded-3">
+                  {% set idcorporation = corporation.id %}
+                  {% set numparticularite = 0 %}
+                    {% for key, particularite in particularites %}
+                      {% if particularite.idcorporation == idcorporation %}
+                        <li class="list-group-item d-flex align-items-center p-3">
+                          {% set numparticularite = numparticularite + 1 %}
+                          <b class="">{{ numparticularite }} - </b>
+                          <p class="mb-0">{{ particularite.particularite }}</p>
+                        </li>
+                      {% endif %}
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
             </div>
-            </div>
+          </div>
+
+
         </div>
 
-        <div class="card">
-            <div class="card-header">
-            <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                Chant
-            </a>
-            </div>
-            <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
-            <div class="card-body">
-                Lorem ipsum..
-            </div>
-            </div>
+
+      <div class="accordion" id="myAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingAnecdotes">
+                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseAnecdotes">Anecdotes</button>									
+            </h2>
+            <div id="collapseAnecdotes" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Full Name</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">Johnatan Smith</p>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
         </div>
+      </div>
 
-        <div class="card">
-            <div class="card-header">
-            <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
-                Décorum
-            </a>
-            </div>
-            <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-            <div class="card-body">
-                Lorem ipsum..
-            </div>
-            </div>
+
+          {# <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                  </p>
+                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                  <div class="progress rounded mb-2" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div> #}
+
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="card">
-            <div class="card-header">
-            <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
-                Anecdotes
-            </a>
-            </div>
-            <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-            <div class="card-body">
-                Lorem ipsum..
-            </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-            <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFour">
-                Pin's
-            </a>
-            </div>
-            <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
-            <div class="card-body">
-                Lorem ipsum..
-            </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-            <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFive">
-                Historique des croix
-            </a>
-            </div>
-            <div id="collapseFive" class="collapse" data-bs-parent="#accordion">
-            <div class="card-body">
-                Lorem ipsum..
-            </div>
-            </div>
-        </div>
-    </div> 
-
-    {# <a href="{{ path('app_corporations_index') }}">back to list</a>
-
-    <a href="{{ path('app_corporations_edit', {'id': corporation.id}) }}">edit</a>
-
-    {{ include('corporations/_delete_form.html.twig') }} #}
-{% endblock %}
+  {% endblock %}

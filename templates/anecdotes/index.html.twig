@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anecdotes index{% endblock %}
+
+{% block body %}
+    <h1>Anecdotes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idcorporation</th>
+                <th>Title</th>
+                <th>Anecdote</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for anecdote in anecdotes %}
+            <tr>
+                <td>{{ anecdote.id }}</td>
+                <td>{{ anecdote.idcorporation }}</td>
+                <td>{{ anecdote.title }}</td>
+                <td>{{ anecdote.anecdote }}</td>
+                <td>
+                    <a href="{{ path('app_anecdotes_show', {'id': anecdote.id}) }}">show</a>
+                    <a href="{{ path('app_anecdotes_edit', {'id': anecdote.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_anecdotes_new') }}">Create new</a>
+{% endblock %}

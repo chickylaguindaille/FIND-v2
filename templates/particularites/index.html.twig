@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Particularites index{% endblock %}
+
+{% block body %}
+    <h1>Particularites index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_corporation</th>
+                <th>Particularite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for particularite in particularites %}
+            <tr>
+                <td>{{ particularite.id }}</td>
+                <td>{{ particularite.idCorporation }}</td>
+                <td>{{ particularite.particularite }}</td>
+                <td>
+                    <a href="{{ path('app_particularites_show', {'id': particularite.id}) }}">show</a>
+                    <a href="{{ path('app_particularites_edit', {'id': particularite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_particularites_new') }}">Create new</a>
+{% endblock %}

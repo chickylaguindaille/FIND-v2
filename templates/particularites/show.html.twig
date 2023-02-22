@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Particularites{% endblock %}
+
+{% block body %}
+    <h1>Particularites</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ particularite.id }}</td>
+            </tr>
+            <tr>
+                <th>Id_corporation</th>
+                <td>{{ particularite.idCorporation }}</td>
+            </tr>
+            <tr>
+                <th>Particularite</th>
+                <td>{{ particularite.particularite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_particularites_index') }}">back to list</a>
+
+    <a href="{{ path('app_particularites_edit', {'id': particularite.id}) }}">edit</a>
+
+    {{ include('particularites/_delete_form.html.twig') }}
+{% endblock %}

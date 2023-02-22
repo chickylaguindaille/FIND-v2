@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Anecdotes{% endblock %}
+
+{% block body %}
+    <h1>Create new Anecdotes</h1>
+
+    {{ include('anecdotes/_form.html.twig') }}
+
+    <a href="{{ path('app_anecdotes_index') }}">back to list</a>
+{% endblock %}

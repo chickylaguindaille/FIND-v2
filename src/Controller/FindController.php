@@ -15,8 +15,14 @@ use App\Form\VilleType;
 use App\Repository\VilleRepository;
 
 use App\Entity\Corporations;
+use App\Entity\Particularites;
+use App\Entity\Anecdotes;
 use App\Form\CorporationsType;
+use App\Form\ParticularitesType;
+use App\Form\AnecdotesType;
 use App\Repository\CorporationsRepository;
+use App\Repository\ParticularitesRepository;
+use App\Repository\AnecdotesRepository;
 
 class FindController extends AbstractController
 {
@@ -53,13 +59,18 @@ class FindController extends AbstractController
 
     // CORPORATION
     #[Route('/Localisation/{country}/{ville}/{corpo}/{id}', name: 'corporation', methods: ['GET'])]
-    public function corporation($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository, Corporations $corporation): Response
+    public function corporation($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository, Corporations $corporation, ParticularitesRepository $particularitesRepository, AnecdotesRepository $anecdotesRepository): Response
     {
-        return $this->render('corporations/test.html.twig', [
-            'corporations' => $corporationsRepository->findAll(), 
+        return $this->render('corporations/corporation.html.twig', [
+            'corporations' => $corporationsRepository->findAll(),
+            $particularites = $particularitesRepository->findAll(),
+            $anecdotes = $anecdotesRepository->findAll(),
             'country' => $country, 'ville' => $ville,
             'corporation' => $corporation,
+            'particularites' => $particularites,
+            'anecdotes' => $anecdotes
         ]);
+
     }
 
 
