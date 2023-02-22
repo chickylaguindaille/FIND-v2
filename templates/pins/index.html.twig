@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pins index{% endblock %}
+
+{% block body %}
+    <h1>Pins index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Source</th>
+                <th>Description</th>
+                <th>Idcorporation</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pin in pins %}
+            <tr>
+                <td>{{ pin.id }}</td>
+                <td>{{ pin.name }}</td>
+                <td>{{ pin.source }}</td>
+                <td>{{ pin.description }}</td>
+                <td>{{ pin.idcorporation }}</td>
+                <td>{{ pin.date ? pin.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_pins_show', {'id': pin.id}) }}">show</a>
+                    <a href="{{ path('app_pins_edit', {'id': pin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pins_new') }}">Create new</a>
+{% endblock %}

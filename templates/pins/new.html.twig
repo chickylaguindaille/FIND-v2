@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pins{% endblock %}
+
+{% block body %}
+    <h1>Create new Pins</h1>
+
+    {{ include('pins/_form.html.twig') }}
+
+    <a href="{{ path('app_pins_index') }}">back to list</a>
+{% endblock %}
