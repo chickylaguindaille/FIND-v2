@@ -4,7 +4,7 @@
 
 {% block content %}
 
-{# {{ dump(pins) }} #}
+{# {{ dump(particularites) }} #}
 
 <section style="background-color: #eee;">
     <div class="container py-3">
@@ -30,8 +30,17 @@
           <div class="card mb-4 mb-lg-0">
             <div class="card-body p-0">
 
-{# PARTICULARITES #}
+{% set idcorporation = corporation.id %}
 
+{# PARTICULARITES #}
+        {% set countparticularites = 0 %}
+        {% for key, particularite in particularites %}
+            {% if particularite.idcorporation == idcorporation %}
+            {% set countparticularites = countparticularites + 1 %}
+            {% endif %}
+        {% endfor %}
+
+        {% if countparticularites != 0 %}
           <div class="accordion" id="myAccordion">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingParticularités">
@@ -39,7 +48,7 @@
                 </h2>
                 <div id="collapseParticularités" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                   <ul class="list-group list-group-flush rounded-3">
-                  {% set idcorporation = corporation.id %}
+                  {# {% set idcorporation = corporation.id %} #}
                   {% set numparticularite = 0 %}
                     {% for key, particularite in particularites %}
                       {% if particularite.idcorporation == idcorporation %}
@@ -56,11 +65,18 @@
               </div>
             </div>
           </div>
+        {% endif %}
                                   
-        {# </div> #}
 
 {# ANECDOTES #}
+        {% set countanecdotes = 0 %}
+        {% for key, anecdote in anecdotes %}
+            {% if anecdote.idcorporation == idcorporation %}
+            {% set countanecdotes = countanecdotes + 1 %}
+            {% endif %}
+        {% endfor %}
 
+        {% if countanecdotes != 0 %}
       <div class="accordion" id="myAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingAnecdotes">
@@ -88,9 +104,17 @@
               </div>
           </div>
       </div>
+      {% endif %}
 
   {# CHANT #}
+        {% set countchant = 0 %}
+        {% for key, chant in chant %}
+            {% if chant.idcorporation == idcorporation %}
+            {% set countchant = countchant + 1 %}
+            {% endif %}
+        {% endfor %}
 
+        {% if countchant != 0 %}
       <div class="accordion" id="myAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingChant">
@@ -118,9 +142,19 @@
               </div>
             </div>
         </div>
+        {% endif %}
+
+
 
 {# DECORUM #}
+        {% set countdecorum = 0 %}
+        {% for key, decorum in decorum %}
+            {% if decorum.idcorporation == idcorporation %}
+            {% set countdecorum = countdecorum + 1 %}
+            {% endif %}
+        {% endfor %}
 
+        {% if countparticularites != 0 %}
       <div class="accordion" id="myAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingDecorum">
@@ -156,9 +190,17 @@
             </div>
         </div>
       </div>
+      {% endif %}
 
 {# PINS #}
+        {% set countpins = 0 %}
+        {% for key, pins in pins %}
+            {% if pins.idcorporation == idcorporation %}
+            {% set countpins = countpins + 1 %}
+            {% endif %}
+        {% endfor %}
 
+        {% if countpins != 0 %}
       <div class="accordion" id="myAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingPins">
@@ -192,6 +234,7 @@
               </div>
             </div>
         </div>
+        {% endif %}
 
 
 
@@ -199,7 +242,14 @@
 
 
 {# HISTORIQUE CROIX #}
+        {% set countcroix = 0 %}
+        {% for key, croix in croix %}
+            {% if croix.idcorporation == idcorporation %}
+            {% set countcroix = countcroix + 1 %}
+            {% endif %}
+        {% endfor %}
 
+        {% if countcroix != 0 %}
       <div class="accordion" id="myAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingCroix">
@@ -230,6 +280,7 @@
             </div>
         </div>
       </div>
+      {% endif %}
 
 
 
