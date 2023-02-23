@@ -26,6 +26,7 @@ use App\Repository\AnecdotesRepository;
 use App\Repository\ChantRepository;
 use App\Repository\DecorumRepository;
 use App\Repository\PinsRepository;
+use App\Repository\CroixRepository;
 
 class FindController extends AbstractController
 {
@@ -62,7 +63,7 @@ class FindController extends AbstractController
 
     // CORPORATION
     #[Route('/Localisation/{country}/{ville}/{corpo}/{id}', name: 'corporation', methods: ['GET'])]
-    public function corporation($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository, Corporations $corporation, ParticularitesRepository $particularitesRepository, AnecdotesRepository $anecdotesRepository, ChantRepository $chantRepository, DecorumRepository $decorumRepository, PinsRepository $pinsRepository): Response
+    public function corporation($country, $ville, Request $request, VilleRepository $villeRepository, CorporationsRepository $corporationsRepository, Corporations $corporation, ParticularitesRepository $particularitesRepository, AnecdotesRepository $anecdotesRepository, ChantRepository $chantRepository, DecorumRepository $decorumRepository, PinsRepository $pinsRepository, CroixRepository $croixRepository): Response
     {
         return $this->render('corporations/corporation.html.twig', [
             'corporations' => $corporationsRepository->findAll(),
@@ -71,13 +72,15 @@ class FindController extends AbstractController
             $chant = $chantRepository->findAll(),
             $decorum = $decorumRepository->findAll(),
             $pins = $pinsRepository->findAll(),
+            $croix = $croixRepository->findAll(),
             'country' => $country, 'ville' => $ville,
             'corporation' => $corporation,
             'particularites' => $particularites,
             'anecdotes' => $anecdotes,
             'chant' => $chant,
             'decorum' => $decorum,
-            'pins' => $pins
+            'pins' => $pins,
+            'croix' => $croix
         ]);
 
     }

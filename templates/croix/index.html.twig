@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Croix index{% endblock %}
+
+{% block body %}
+    <h1>Croix index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Poste</th>
+                <th>Annee</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Surnom</th>
+                <th>Idcorporation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for croix in croixes %}
+            <tr>
+                <td>{{ croix.id }}</td>
+                <td>{{ croix.poste }}</td>
+                <td>{{ croix.annee ? croix.annee|date('Y-m-d') : '' }}</td>
+                <td>{{ croix.nom }}</td>
+                <td>{{ croix.prenom }}</td>
+                <td>{{ croix.surnom }}</td>
+                <td>{{ croix.idcorporation }}</td>
+                <td>
+                    <a href="{{ path('app_croix_show', {'id': croix.id}) }}">show</a>
+                    <a href="{{ path('app_croix_edit', {'id': croix.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_croix_new') }}">Create new</a>
+{% endblock %}

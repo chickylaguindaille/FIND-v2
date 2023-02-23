@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Croix{% endblock %}
+
+{% block body %}
+    <h1>Edit Croix</h1>
+
+    {{ include('croix/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_croix_index') }}">back to list</a>
+
+    {{ include('croix/_delete_form.html.twig') }}
+{% endblock %}

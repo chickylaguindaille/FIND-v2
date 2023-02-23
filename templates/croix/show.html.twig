@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Croix{% endblock %}
+
+{% block body %}
+    <h1>Croix</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ croix.id }}</td>
+            </tr>
+            <tr>
+                <th>Poste</th>
+                <td>{{ croix.poste }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ croix.annee ? croix.annee|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ croix.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ croix.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Surnom</th>
+                <td>{{ croix.surnom }}</td>
+            </tr>
+            <tr>
+                <th>Idcorporation</th>
+                <td>{{ croix.idcorporation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_croix_index') }}">back to list</a>
+
+    <a href="{{ path('app_croix_edit', {'id': croix.id}) }}">edit</a>
+
+    {{ include('croix/_delete_form.html.twig') }}
+{% endblock %}

@@ -35,7 +35,7 @@
           <div class="accordion" id="myAccordion">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingParticularités">
-                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseParticularités">Particularités</button>									
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseParticularités">Particularités</button>									
                 </h2>
                 <div id="collapseParticularités" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                   <ul class="list-group list-group-flush rounded-3">
@@ -50,12 +50,14 @@
                         </li>
                       {% endif %}
                   {% endfor %}
+                  <hr>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+                                  
+        {# </div> #}
 
 {# ANECDOTES #}
 
@@ -84,7 +86,7 @@
                   </div>
                 </div>
               </div>
-        </div>
+          </div>
       </div>
 
   {# CHANT #}
@@ -97,7 +99,7 @@
             <div id="collapseChant" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
               <div class="col-lg-8">
                 <div class="card mb-4">
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     {% for key, chant in chant %}
                       {% if chant.idcorporation == idcorporation %}
                         <div class="row">
@@ -171,8 +173,6 @@
                     {% for key, pins in pins %}
                       {% if pins.idcorporation == idcorporation %}
 
-
-
                         <div class="py-3 border text-center">
                             <img src="{{ asset(''~pins.source)}}" style="width: 100px;">
                             <div class="">
@@ -182,18 +182,60 @@
                               <p class="text-muted mb-0">{{pins.description}}</p>
                             </div>
                         </div>
-                
 
                       {% endif %}
                   {% endfor %}
 
                       </div>
-
                   </div>
                 </div>
               </div>
             </div>
         </div>
+
+
+
+
+
+
+{# HISTORIQUE CROIX #}
+
+      <div class="accordion" id="myAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingCroix">
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseCroix">Historique Croix</button>									
+            </h2>
+            <div id="collapseCroix" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+
+              {% set rowannee = 0 %}
+                    {% for key, croix in croix|sort((a, b) => a.annee <=> b.annee) %}
+                      {% if croix.idcorporation == idcorporation %}
+                        {% if croix.annee != rowannee and rowannee != 0 %}</div></div>{% endif %}
+                          {% if croix.annee != rowannee %}<div class="row"><div class="col-3 border text-center"><b>{{croix.annee}}</b></div>{% endif %}
+                            
+                                <div class="col border p-0">
+                                  {% if croix.annee != rowannee %}<div class="col border">{% endif %}
+                                  <span>{{croix.poste}} : {{croix.surnom}}</span>
+                                </div>
+                                
+                        {% endif %}
+                        {% set rowannee = croix.annee %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+
       </div>
 
           {# <div class="row">
