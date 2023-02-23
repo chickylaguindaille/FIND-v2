@@ -2,16 +2,18 @@
 
 {% block content %}
 
+{{dump(corporations)}}
+
 
 <div class="d-flex">
   <div class="input-group mt-3 mb-3 w-100  align-items-center ">
       <a href="{{app.request.headers.get('referer')}}" class="position-absolute"><i class="bi bi-chevron-left text-dark px-3 "></i></a>
       <div class="justify-content-center mx-auto d-flex">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tri</button>
+        {# <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tri</button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Alphabet</a></li>
           <li><a class="dropdown-item" href="#">Région action</a></li>
-        </ul>
+        </ul> #}
         <input type="search" class="form-control" placeholder="Recherche">
       </div>
   </div>

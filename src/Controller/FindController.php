@@ -44,6 +44,12 @@ class FindController extends AbstractController
     #[Route('/Localisation/{country}/Ville', name: 'ville', methods: ['GET'])]
     public function villes($country, Request $request, VilleRepository $villeRepository): Response
     {
+        
+        $ville = $villeRepository-> createQueryBuilder();
+        // $array = (array) $ville[0];
+        // $ville = json_decode(json_encode($ville), true);
+        exit(var_dump($ville));
+
         // exit(var_dump($villeRepository['villes']['nom']));
         return $this->render('location/town.html.twig', [
             'villes' => $villeRepository->findAll(), 'country' => $country
