@@ -2,9 +2,9 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:8889
--- Généré le : mer. 22 fév. 2023 à 19:13
--- Version du serveur : 5.7.39
+-- Hôte : localhost
+-- Généré le : ven. 24 fév. 2023 à 16:34
+-- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `anecdotes` (
   `id` int(11) NOT NULL,
   `idcorporation` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `anecdote` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `title` varchar(255) NOT NULL,
+  `anecdote` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -50,10 +50,10 @@ INSERT INTO `anecdotes` (`id`, `idcorporation`, `title`, `anecdote`) VALUES
 
 CREATE TABLE `chant` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `author` varchar(255) DEFAULT NULL,
   `idcorporation` int(11) NOT NULL,
-  `texte` varchar(10000) COLLATE utf8mb4_unicode_ci NOT NULL
+  `texte` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `chant` (
 --
 
 INSERT INTO `chant` (`id`, `name`, `author`, `idcorporation`, `texte`) VALUES
-(1, 'La Rouie', NULL, 1, 'Depuis mon baptême, la révélation<br>La Filière que j’aime, qui domine le con<br />\\r\\nLe con de ta mère par devant derrière<br />\\r\\nPar l’interfilière, toujours il prend cher<br />\\r\\n<br />\\r\\nHabitant du côté d’la Seine<br />\\r\\nJe n’ai jamais touché ton hymen<br />\\r\\nJe remplace par un verre de bière<br />\\r\\nJe suis fier d’être interfilière<br />\\r\\nEt je suis fier (ter) d’être interfilière<br />\\r\\nEt je suis fier (ter) de r’tourner ta mère<br />\\r\\n<br />\\r\\nEté comme hiver, ta mère ou ton père<br />\\r\\nCraignant l’adultère, c’est nous qu’elle préfère<br />\\r\\nNon l’interfilière ne se laisse pas faire<br />\\r\\nC’est une vraie guerrière toujours volontaire<br />\\r\\n');
+(1, 'La Rouie', NULL, 1, 'Depuis mon baptême, la révélation<br>\nLa Filière que j’aime, qui domine le con<br />\nLe con de ta mère par devant derrière<br />\nPar l’interfilière, toujours il prend cher<br />\n<br />\nHabitant du côté d’la Seine<br />\nJe n’ai jamais touché ton hymen<br />\nJe remplace par un verre de bière<br />\nJe suis fier d’être interfilière<br />\nEt je suis fier (ter) d’être interfilière<br />\nEt je suis fier (ter) de r’tourner ta mère<br />\n<br />\nEté comme hiver, ta mère ou ton père<br />\nCraignant l’adultère, c’est nous qu’elle préfère<br />\nNon l’interfilière ne se laisse pas faire<br />\nC’est une vraie guerrière toujours volontaire<br />\n');
 
 -- --------------------------------------------------------
 
@@ -71,10 +71,10 @@ INSERT INTO `chant` (`id`, `name`, `author`, `idcorporation`, `texte`) VALUES
 
 CREATE TABLE `chicken` (
   `id` int(11) NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `test` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `email` varchar(180) NOT NULL,
+  `roles` longtext NOT NULL COMMENT '(DC2Type:json)',
+  `password` varchar(255) NOT NULL,
+  `test` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -85,13 +85,13 @@ CREATE TABLE `chicken` (
 
 CREATE TABLE `corporations` (
   `id` int(11) NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abreviation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `abreviation` varchar(255) NOT NULL,
   `date` date DEFAULT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `resume` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pays` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `logo` varchar(255) DEFAULT NULL,
+  `resume` varchar(255) NOT NULL,
+  `ville` varchar(255) NOT NULL,
+  `pays` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -106,14 +106,43 @@ INSERT INTO `corporations` (`id`, `nom`, `abreviation`, `date`, `logo`, `resume`
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `croix`
+--
+
+CREATE TABLE `croix` (
+  `id` int(11) NOT NULL,
+  `poste` varchar(255) NOT NULL,
+  `annee` int(11) NOT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `prenom` varchar(255) DEFAULT NULL,
+  `surnom` varchar(255) NOT NULL,
+  `idcorporation` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `croix`
+--
+
+INSERT INTO `croix` (`id`, `poste`, `annee`, `nom`, `prenom`, `surnom`, `idcorporation`) VALUES
+(1, 'GM', 2021, NULL, NULL, 'Test 2018', 1),
+(2, 'GC', 2018, NULL, NULL, 'Test 2018', 1),
+(3, 'GM', 2019, NULL, NULL, 'Test2', 1),
+(4, 'GM', 2020, NULL, NULL, 'GM', 1),
+(5, 'GC', 2020, NULL, NULL, 'Testttt', 1),
+(6, 'GC', 2018, NULL, NULL, 'zr', 1),
+(7, 'GM', 2018, NULL, NULL, 'zrg', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `decorum`
 --
 
 CREATE TABLE `decorum` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `source` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `source` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `idcorporation` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -132,7 +161,7 @@ INSERT INTO `decorum` (`id`, `name`, `source`, `description`, `idcorporation`) V
 --
 
 CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(191) NOT NULL,
   `executed_at` datetime DEFAULT NULL,
   `execution_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -152,7 +181,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20230122214133', '2023-01-22 21:41:46', 178),
 ('DoctrineMigrations\\Version20230222105813', '2023-02-22 10:58:26', 90),
 ('DoctrineMigrations\\Version20230222114204', '2023-02-22 11:42:08', 124),
-('DoctrineMigrations\\Version20230222134518', '2023-02-22 13:45:27', 74);
+('DoctrineMigrations\\Version20230222134518', '2023-02-22 13:45:27', 74),
+('DoctrineMigrations\\Version20230222193800', '2023-02-23 12:32:14', 9);
 
 -- --------------------------------------------------------
 
@@ -162,9 +192,9 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 CREATE TABLE `messenger_messages` (
   `id` bigint(20) NOT NULL,
-  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` longtext NOT NULL,
+  `headers` longtext NOT NULL,
+  `queue_name` varchar(190) NOT NULL,
   `created_at` datetime NOT NULL,
   `available_at` datetime NOT NULL,
   `delivered_at` datetime DEFAULT NULL
@@ -178,17 +208,41 @@ CREATE TABLE `messenger_messages` (
 
 CREATE TABLE `particularites` (
   `id` int(11) NOT NULL,
-  `id_corporation` int(11) NOT NULL,
-  `particularite` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `idcorporation` int(11) NOT NULL,
+  `particularite` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `particularites`
 --
 
-INSERT INTO `particularites` (`id`, `id_corporation`, `particularite`) VALUES
+INSERT INTO `particularites` (`id`, `idcorporation`, `particularite`) VALUES
 (1, 1, 'Test 1'),
 (2, 1, 'Test 2');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pins`
+--
+
+CREATE TABLE `pins` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `source` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `idcorporation` int(11) NOT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `pins`
+--
+
+INSERT INTO `pins` (`id`, `name`, `source`, `description`, `idcorporation`, `date`) VALUES
+(1, 'pins 1', 'assets/img/pins/Paris/Interfiliere/logoif.jpg', 'pin\'s logo de la filiere', 1, '2019-01-01'),
+(2, 'pins 2', 'assets/img/pins/Paris/Interfiliere/dtif.jpg', 'pin\'s dt de la filiere', 1, '2018-01-01'),
+(3, 'Pin\'s 3', 'assets/img/pins/Paris/Interfiliere/logoif.jpg', 'Pin\'s 3', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -198,10 +252,10 @@ INSERT INTO `particularites` (`id`, `id_corporation`, `particularite`) VALUES
 
 CREATE TABLE `ville` (
   `id` int(11) NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `blason` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nom` varchar(255) NOT NULL,
+  `blason` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `region` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -250,6 +304,12 @@ ALTER TABLE `corporations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `croix`
+--
+ALTER TABLE `croix`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `decorum`
 --
 ALTER TABLE `decorum`
@@ -274,6 +334,12 @@ ALTER TABLE `messenger_messages`
 -- Index pour la table `particularites`
 --
 ALTER TABLE `particularites`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `pins`
+--
+ALTER TABLE `pins`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -311,6 +377,12 @@ ALTER TABLE `corporations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT pour la table `croix`
+--
+ALTER TABLE `croix`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT pour la table `decorum`
 --
 ALTER TABLE `decorum`
@@ -327,6 +399,12 @@ ALTER TABLE `messenger_messages`
 --
 ALTER TABLE `particularites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `pins`
+--
+ALTER TABLE `pins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `ville`
