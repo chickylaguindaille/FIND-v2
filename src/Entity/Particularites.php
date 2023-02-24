@@ -14,7 +14,7 @@ class Particularites
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $id_corporation = null;
+    private ?int $idcorporation = null;
 
     #[ORM\Column(length: 255)]
     private ?string $particularite = null;
@@ -26,12 +26,12 @@ class Particularites
 
     public function getIdCorporation(): ?int
     {
-        return $this->id_corporation;
+        return $this->idcorporation;
     }
 
-    public function setIdCorporation(int $id_corporation): self
+    public function setIdCorporation(int $idcorporation): self
     {
-        $this->id_corporation = $id_corporation;
+        $this->idcorporation = $idcorporation;
 
         return $this;
     }

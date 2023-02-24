@@ -15,25 +15,25 @@ class Corporations
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Nom = null;
+    private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Ville = null;
+    private ?string $ville = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Pays = null;
+    private ?string $pays = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $Date = null;
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Logo = null;
+    private ?string $logo = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Abreviation = null;
+    private ?string $abreviation = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Resume = null;
+    private ?string $resume = null;
 
     public function getId(): ?int
     {
@@ -42,12 +42,12 @@ class Corporations
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): self
+    public function setNom(string $nom): self
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -55,72 +55,72 @@ class Corporations
 
     public function getVille(): ?string
     {
-        return $this->Ville;
+        return $this->ville;
     }
 
-    public function setVille(string $Ville): self
+    public function setVille(string $ville): self
     {
-        $this->Ville = $Ville;
+        $this->ville = $ville;
 
         return $this;
     }
 
     public function getPays(): ?string
     {
-        return $this->Pays;
+        return $this->pays;
     }
 
-    public function setPays(string $Pays): self
+    public function setPays(string $pays): self
     {
-        $this->Pays = $Pays;
+        $this->pays = $pays;
 
         return $this;
     }
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->Date;
+        return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $Date): self
+    public function setDate(?\DateTimeInterface $date): self
     {
-        $this->Date = $Date;
+        $this->date = $date;
 
         return $this;
     }
 
     public function getLogo(): ?string
     {
-        return $this->Logo;
+        return $this->logo;
     }
 
-    public function setLogo(?string $Logo): self
+    public function setLogo(?string $logo): self
     {
-        $this->Logo = $Logo;
+        $this->logo = $logo;
 
         return $this;
     }
 
     public function getAbreviation(): ?string
     {
-        return $this->Abreviation;
+        return $this->abreviation;
     }
 
-    public function setAbreviation(string $Abreviation): self
+    public function setAbreviation(string $abreviation): self
     {
-        $this->Abreviation = $Abreviation;
+        $this->abreviation = $abreviation;
 
         return $this;
     }
 
     public function getResume(): ?string
     {
-        return $this->Resume;
+        return $this->resume;
     }
 
-    public function setResume(string $Resume): self
+    public function setResume(string $resume): self
     {
-        $this->Resume = $Resume;
+        $this->resume = $resume;
 
         return $this;
     }
