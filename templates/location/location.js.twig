@@ -1,0 +1,50 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+
+  $(document).ready(function(){
+
+
+    $('#search-ville').keyup(function(){
+
+      $('#result-search').html('');
+
+ 
+
+      var utilisateur = $(this).val();
+
+ console.log(utilisateur);
+
+      if(utilisateur != ""){
+
+        $.ajax({
+
+          type: 'GET',
+
+          url: 'Ville',
+
+          data: 'user=' + encodeURIComponent(utilisateur),
+
+          success: function(data){
+
+            if(data != ""){
+
+              $('#result-search').append(utilisateur);
+
+            }else{
+
+              document.getElementById('result-search').innerHTML = "<div style='font-size: 20px; text-align: center; margin-top: 10px'>Aucun utilisateur</div>"
+
+            }
+
+          }
+
+        });
+
+      }
+
+    });
+
+  });
+
+</script>
