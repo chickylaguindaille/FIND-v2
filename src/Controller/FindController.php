@@ -45,6 +45,12 @@ class FindController extends AbstractController
     #[Route('/Localisation/{country}/Ville', name: 'ville', methods: ['GET'])]
     public function villes($country, Request $request, VilleRepository $villeRepository): Response
     {
+        $requestString = $request->get('searchVille');
+        if ($requestString != null){
+        return new Response(json_encode($requestString));
+    }
+        // exit(var_dump($searchville));
+
         // TABLEAU VILLE
         $serializer = SerializerBuilder::create()->build();
         $ville = $villeRepository->findAll();
@@ -52,6 +58,8 @@ class FindController extends AbstractController
 
         $data['villes'] = $ville;
         $data['country'] = $country;
+
+        // $data['test'] = $searchville;
 
         return $this->render('location/town.html.twig', $data );
     }

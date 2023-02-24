@@ -21,7 +21,7 @@
 
         <div id="result-search"></div>
 
-{# {{ dump() }} #}
+
 <ul class="list-group list-group-light mb-4">
 
 {% set alphabet = "?" %}
@@ -29,7 +29,7 @@
 {% for ville in villes|sort((a, b) => a.nom <=> b.nom) %}
   {% if ville.country == country %}
     {% if ville.nom|first != alphabet %}
-      {% set alphabet = ville.nom|first %} 
+      {% set alphabet = ville.nom|first %}
       <h6 class="bg-light p-2 border-top border-bottom mb-0">{{alphabet}}</h6> 
     {% endif %}
 

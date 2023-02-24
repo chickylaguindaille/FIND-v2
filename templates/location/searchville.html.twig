@@ -1,39 +1,5 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-<script>
-
-  $(document).ready(function(){
-
-
-    $('#search-ville').keyup(function(){
-
-      $('#result-search').html('');
-
- 
-
-      var searchville = $(this).val();
-
- console.log(searchville);
-
-      if(searchville != ""){
-
-        $.ajax({
-
-          type: 'GET',
-
-          url: '{{ path('ville', {'country': 'France'})}}?ajaxid=4',
-
-          data: {'searchVille' : searchville},
-
-          success: function(data){
-
-            if(data != ""){
-
-              $('#result-search').html(
-              
-              
-              
-              
+{# <ul id="result-search" class="list-group list-group-light mb-4"> #}
+{# teststddftgehjusrgzfb #}
 {% set alphabet = "?" %}
 
 {% for ville in villes|sort((a, b) => a.nom <=> b.nom) %}
@@ -57,27 +23,4 @@
 
 
 {% endfor %}
-              
-              
-              
-              
-              );
-              
-
-            }else{
-
-              document.getElementById('result-search').innerHTML = "<div style='font-size: 20px; text-align: center; margin-top: 10px'>Aucun utilisateur</div>"
-
-            }
-
-          }
-
-        });
-
-      }
-
-    });
-
-  });
-
-</script>
+{# </ul> #}
